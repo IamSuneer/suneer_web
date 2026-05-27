@@ -1,0 +1,140 @@
+@model ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<!-- Page header -->
+<section class="section-pad-sm" style="background: var(--bs-secondary-bg)">
+    <div class="container">
+        <p class="section-label">Say hello</p>
+        <h1 class="section-title">Get In <span>Touch</span></h1>
+        <div class="section-divider left"></div>
+    </div>
+</section>
+
+<section class="section-pad">
+    <div class="container">
+        <div class="row g-5">
+
+            <!-- Contact info -->
+            <div class="col-lg-4 animate-up">
+                <p class="section-label mb-2">Contact Info</p>
+                <h3 class="fw-bold mb-4">Let's <span class="text-primary">Connect</span></h3>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold small">Email</div>
+                        <a href="mailto:suneer@example.com"
+                           class="text-secondary text-decoration-none small">suneer@example.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold small">Location</div>
+                        <span class="text-secondary small">Kathmandu, Nepal</span>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6">
+                        <i class="bi bi-github"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold small">GitHub</div>
+                        <a href="#" target="_blank" class="text-secondary text-decoration-none small">
+                            github.com/suneer
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon" style="background:rgba(59,130,246,.1);color:#0a66c2">
+                        <i class="bi bi-linkedin"></i>
+                    </div>
+                    <div>
+                        <div class="fw-semibold small">LinkedIn</div>
+                        <a href="#" target="_blank" class="text-secondary text-decoration-none small">
+                            linkedin.com/in/suneer
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-3 p-4 mt-2" style="background:rgba(59,130,246,.06); border:1px solid rgba(59,130,246,.15)">
+                    <p class="small text-secondary mb-0 lh-lg">
+                        <i class="bi bi-clock text-primary me-2"></i>
+                        I typically respond within <strong>24–48 hours</strong>. Looking forward to hearing from you!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact form -->
+            <div class="col-lg-8 animate-up">
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <div class="card border-0 shadow-sm p-4 p-lg-5">
+                    <h4 class="fw-bold mb-1">Send a Message</h4>
+                    <p class="text-secondary small mb-4">
+                        Fill out the form and I'll get back to you as soon as possible.
+                    </p>
+
+                    <form asp-controller="Home" asp-action="Contact" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="alert alert-danger py-2 small mb-3" role="alert"></div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-sm-6">
+                                <label asp-for="Name" class="form-label fw-semibold small"></label>
+                                <input asp-for="Name"
+                                       class="form-control"
+                                       placeholder="John Doe"
+                                       autocomplete="name" />
+                                <span asp-validation-for="Name" class="text-danger small"></span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label asp-for="Email" class="form-label fw-semibold small"></label>
+                                <input asp-for="Email"
+                                       class="form-control"
+                                       placeholder="john@example.com"
+                                       autocomplete="email" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Message" class="form-label fw-semibold small"></label>
+                            <textarea asp-for="Message"
+                                      class="form-control"
+                                      rows="6"
+                                      placeholder="Hi Suneer, I'd love to discuss a project with you…"></textarea>
+                            <span asp-validation-for="Message" class="text-danger small"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="bi bi-send me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

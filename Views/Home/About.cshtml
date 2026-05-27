@@ -1,0 +1,173 @@
+@model AboutViewModel
+@{
+    ViewData["Title"] = "About";
+    var profile = Model.Profile;
+}
+
+<!-- Page header -->
+<section class="section-pad-sm" style="background: var(--bs-secondary-bg)">
+    <div class="container">
+        <p class="section-label">Get to know me</p>
+        <h1 class="section-title">About <span>Me</span></h1>
+        <div class="section-divider left"></div>
+    </div>
+</section>
+
+<!-- Profile + bio -->
+<section class="section-pad">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+
+            <!-- Avatar + quick facts -->
+            <div class="col-lg-4 text-center animate-up">
+                @if (!string.IsNullOrWhiteSpace(profile?.ImageUrl))
+                {
+                    <img src="@profile.ImageUrl" alt="@(profile?.Name ?? "Profile")"
+                         class="hero-avatar mx-auto d-block mb-4"
+                         onerror="this.style.display='none'" />
+                }
+                else
+                {
+                    <div class="hero-avatar-placeholder mx-auto mb-4">
+                        <i class="bi bi-person"></i>
+                    </div>
+                }
+                <h4 class="fw-bold mb-1">@(profile?.Name ?? "Suneer Ranjitkar")</h4>
+                <p class="text-primary fw-semibold mb-3">@(profile?.Title ?? "")</p>
+
+                <div class="list-group list-group-flush text-start">
+                    <div class="list-group-item border-0 px-0 py-2">
+                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                        <span class="small">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="list-group-item border-0 px-0 py-2">
+                        <i class="bi bi-code-slash text-primary me-2"></i>
+                        <span class="small">Full-Stack .NET Developer</span>
+                    </div>
+                    <div class="list-group-item border-0 px-0 py-2">
+                        <i class="bi bi-circle-fill text-success me-2" style="font-size:.5rem"></i>
+                        <span class="small fw-semibold">Available for opportunities</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <a href="#" class="btn btn-outline-secondary btn-sm px-3" title="GitHub">
+                        <i class="bi bi-github me-1"></i>GitHub
+                    </a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm px-3" title="LinkedIn">
+                        <i class="bi bi-linkedin me-1"></i>LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bio -->
+            <div class="col-lg-8 animate-up">
+                <p class="section-label">Who I am</p>
+                <h2 class="section-title mb-3">
+                    Passionate <span>Developer</span>
+                </h2>
+
+                @if (!string.IsNullOrWhiteSpace(profile?.Bio))
+                {
+                    var bioParagraphs = profile.Bio.Split(
+                        new[] { "\r\n\r\n", "\n\n" },
+                        StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                    if (bioParagraphs.Length == 0) bioParagraphs = new[] { profile.Bio };
+
+                    foreach (var para in bioParagraphs)
+                    {
+                        <p class="text-secondary lh-lg mb-3">@para</p>
+                    }
+                }
+
+                <a asp-action="Resume" class="btn btn-primary me-2">
+                    <i class="bi bi-file-earmark-person me-2"></i>View Resume
+                </a>
+                <a asp-action="Contact" class="btn btn-outline-secondary">
+                    <i class="bi bi-envelope me-2"></i>Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience timeline -->
+@if (Model.Experiences.Any())
+{
+    <section class="section-pad" style="background: var(--bs-secondary-bg)">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-label">Career</p>
+                <h2 class="section-title">Work <span>Experience</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="timeline">
+                        @foreach (var exp in Model.Experiences)
+                        {
+                            var endLabel = exp.EndDate.HasValue
+                                ? exp.EndDate.Value.ToString("MMM yyyy")
+                                : "Present";
+                            <div class="timeline-item animate-up">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-card">
+                                    <div class="timeline-date">
+                                        <i class="bi bi-calendar3 me-1"></i>
+                                        @exp.StartDate.ToString("MMM yyyy") — @endLabel
+                                    </div>
+                                    <div class="timeline-role">@exp.Role</div>
+                                    <div class="timeline-company">
+                                        <i class="bi bi-building me-1"></i>@exp.Company
+                                    </div>
+                                    <p class="text-secondary small mb-0 lh-lg">@exp.Description</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<!-- Education timeline -->
+@if (Model.Educations.Any())
+{
+    <section class="section-pad">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-label">Academic</p>
+                <h2 class="section-title">Education <span>History</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="timeline">
+                        @foreach (var edu in Model.Educations)
+                        {
+                            var endLabel = edu.EndDate.HasValue
+                                ? edu.EndDate.Value.ToString("MMM yyyy")
+                                : "Present";
+                            <div class="timeline-item animate-up">
+                                <div class="timeline-dot" style="background:#8b5cf6"></div>
+                                <div class="timeline-card">
+                                    <div class="timeline-date">
+                                        <i class="bi bi-calendar3 me-1"></i>
+                                        @edu.StartDate.ToString("MMM yyyy") — @endLabel
+                                    </div>
+                                    <div class="timeline-role">@edu.Degree</div>
+                                    <div class="timeline-company">
+                                        <i class="bi bi-mortarboard me-1"></i>@edu.School
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
