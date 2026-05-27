@@ -167,10 +167,10 @@
   const typedEl = document.getElementById('typedTitle');
   if (typedEl) {
     const titles = [
-      'Full-Stack .NET Developer',
-      'ASP.NET Core Specialist',
-      'React + TypeScript Dev',
-      'Cloud & DevOps Enthusiast'
+      '.NET Backend Engineer',
+      'ASP.NET Core Developer',
+      'Enterprise App Developer',
+      'Clean Architecture Advocate'
     ];
     let ti = 0, ci = 0, deleting = false;
 
