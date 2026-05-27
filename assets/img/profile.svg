@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <rect width="400" height="400" fill="url(#glow)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="133" x2="400" y2="133" stroke="rgba(59,130,246,0.06)" stroke-width="1"/>
+  <line x1="0" y1="266" x2="400" y2="266" stroke="rgba(59,130,246,0.06)" stroke-width="1"/>
+  <line x1="133" y1="0" x2="133" y2="400" stroke="rgba(59,130,246,0.06)" stroke-width="1"/>
+  <line x1="266" y1="0" x2="266" y2="400" stroke="rgba(59,130,246,0.06)" stroke-width="1"/>
+
+  <!-- Avatar ring -->
+  <circle cx="200" cy="158" r="92" fill="none" stroke="rgba(59,130,246,0.22)" stroke-width="1.5"/>
+  <circle cx="200" cy="158" r="80" fill="rgba(30,58,95,0.7)" stroke="rgba(59,130,246,0.35)" stroke-width="2"/>
+
+  <!-- Initials -->
+  <text x="200" y="192" font-family="Inter,system-ui,sans-serif" font-size="72" font-weight="900"
+        text-anchor="middle" dominant-baseline="auto"
+        fill="rgba(147,197,253,0.75)" letter-spacing="-3">SR</text>
+
+  <!-- Shoulder / body shape -->
+  <path d="M40 400 Q40 295 200 278 Q360 295 360 400 Z" fill="rgba(59,130,246,0.1)"/>
+
+  <!-- Bottom label -->
+  <text x="200" y="372" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="600"
+        text-anchor="middle" fill="rgba(147,197,253,0.4)" letter-spacing="0.1em">SUNEER RANJITKAR</text>
+</svg>

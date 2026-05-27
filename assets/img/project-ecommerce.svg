@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1040"/>
+      <stop offset="100%" stop-color="#0e0a28"/>
+    </linearGradient>
+    <linearGradient id="bar1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="bar2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)"/>
+
+  <!-- Blobs -->
+  <circle cx="650" cy="80"  r="90"  fill="rgba(99,102,241,0.07)"/>
+  <circle cx="150" cy="380" r="100" fill="rgba(139,92,246,0.06)"/>
+
+  <!-- Stats row -->
+  <rect x="60"  y="50" width="150" height="70" rx="8" fill="rgba(30,20,70,0.8)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <text x="135" y="75"  font-family="Inter,sans-serif" font-size="11" text-anchor="middle" fill="rgba(196,181,253,0.5)">REVENUE</text>
+  <text x="135" y="100" font-family="Inter,sans-serif" font-size="20" font-weight="800" text-anchor="middle" fill="rgba(196,181,253,0.9)">$48.2K</text>
+
+  <rect x="225" y="50" width="150" height="70" rx="8" fill="rgba(30,20,70,0.8)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <text x="300" y="75"  font-family="Inter,sans-serif" font-size="11" text-anchor="middle" fill="rgba(196,181,253,0.5)">ORDERS</text>
+  <text x="300" y="100" font-family="Inter,sans-serif" font-size="20" font-weight="800" text-anchor="middle" fill="rgba(196,181,253,0.9)">1,284</text>
+
+  <rect x="390" y="50" width="150" height="70" rx="8" fill="rgba(30,20,70,0.8)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <text x="465" y="75"  font-family="Inter,sans-serif" font-size="11" text-anchor="middle" fill="rgba(196,181,253,0.5)">CUSTOMERS</text>
+  <text x="465" y="100" font-family="Inter,sans-serif" font-size="20" font-weight="800" text-anchor="middle" fill="rgba(196,181,253,0.9)">8,731</text>
+
+  <rect x="555" y="50" width="185" height="70" rx="8" fill="rgba(30,20,70,0.8)" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+  <text x="648" y="75"  font-family="Inter,sans-serif" font-size="11" text-anchor="middle" fill="rgba(52,211,153,0.6)">GROWTH</text>
+  <text x="648" y="100" font-family="Inter,sans-serif" font-size="20" font-weight="800" text-anchor="middle" fill="rgba(52,211,153,0.9)">+24.5%</text>
+
+  <!-- Chart area -->
+  <rect x="60" y="145" width="480" height="250" rx="8" fill="rgba(20,12,50,0.7)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+  <text x="300" y="168" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="rgba(196,181,253,0.5)">MONTHLY REVENUE</text>
+
+  <!-- Bar chart bars -->
+  <rect x="90"  y="285" width="34" height="85"  rx="4" fill="url(#bar1)" opacity="0.7"/>
+  <rect x="140" y="265" width="34" height="105" rx="4" fill="url(#bar1)" opacity="0.7"/>
+  <rect x="190" y="240" width="34" height="130" rx="4" fill="url(#bar1)" opacity="0.8"/>
+  <rect x="240" y="255" width="34" height="115" rx="4" fill="url(#bar1)" opacity="0.8"/>
+  <rect x="290" y="220" width="34" height="150" rx="4" fill="url(#bar2)" opacity="0.9"/>
+  <rect x="340" y="210" width="34" height="160" rx="4" fill="url(#bar2)" opacity="0.9"/>
+  <rect x="390" y="195" width="34" height="175" rx="4" fill="url(#bar2)"/>
+  <rect x="440" y="180" width="34" height="190" rx="4" fill="url(#bar2)"/>
+
+  <!-- Line chart overlay -->
+  <polyline points="107,310 157,290 207,262 257,275 307,240 357,228 407,212 457,196"
+            fill="none" stroke="rgba(52,211,153,0.7)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="457" cy="196" r="5" fill="rgba(52,211,153,0.9)"/>
+
+  <!-- Right sidebar -->
+  <rect x="560" y="145" width="180" height="250" rx="8" fill="rgba(20,12,50,0.7)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+  <text x="650" y="170" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="rgba(196,181,253,0.5)">TOP PRODUCTS</text>
+  <rect x="575" y="185" width="150" height="30" rx="6" fill="rgba(99,102,241,0.15)"/>
+  <rect x="575" y="225" width="150" height="30" rx="6" fill="rgba(99,102,241,0.15)"/>
+  <rect x="575" y="265" width="150" height="30" rx="6" fill="rgba(99,102,241,0.15)"/>
+  <rect x="575" y="305" width="150" height="30" rx="6" fill="rgba(99,102,241,0.15)"/>
+</svg>
