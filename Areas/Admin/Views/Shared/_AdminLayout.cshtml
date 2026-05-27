@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        :root { --sidebar-w: 240px; --topbar-h: 56px; }
+
+        body { background-color: #f0f2f5; }
+
+        /* ── Sidebar ── */
+        .admin-sidebar {
+            width: var(--sidebar-w);
+            min-height: 100vh;
+            background: #1e2a3a;
+            color: #c9d1d9;
+            position: fixed;
+            top: 0; left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1040;
+            transition: transform .25s ease;
+        }
+
+        .admin-sidebar .brand {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            flex-shrink: 0;
+        }
+
+        .admin-sidebar .nav-section {
+            padding: .75rem 1.5rem .25rem;
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.35);
+        }
+
+        .admin-sidebar .nav-link {
+            color: #c9d1d9;
+            padding: .5rem 1.5rem;
+            font-size: .875rem;
+            border-radius: 0;
+            transition: background .15s, color .15s;
+        }
+
+        .admin-sidebar .nav-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+        .admin-sidebar .nav-link.active { background: rgba(255,255,255,.10); color: #fff; font-weight: 600; }
+        .admin-sidebar .nav-link i { width: 1.25rem; }
+
+        /* ── Topbar ── */
+        .admin-topbar {
+            height: var(--topbar-h);
+            background: #fff;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            position: fixed;
+            top: 0; left: var(--sidebar-w); right: 0;
+            z-index: 1030;
+            box-shadow: 0 1px 4px rgba(0,0,0,.06);
+            transition: left .25s ease;
+        }
+
+        /* ── Content ── */
+        .admin-content {
+            margin-left: var(--sidebar-w);
+            padding-top: var(--topbar-h);
+            transition: margin-left .25s ease;
+        }
+
+        .admin-content .inner { padding: 1.75rem; }
+
+        /* ── Mobile overlay ── */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.45);
+            z-index: 1039;
+        }
+
+        @@media (max-width: 991.98px) {
+            .admin-sidebar    { transform: translateX(-100%); }
+            .admin-sidebar.show { transform: translateX(0); }
+            .sidebar-overlay.show { display: block; }
+            .admin-topbar     { left: 0; }
+            .admin-content    { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+@{
+    var ctrl = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    string Nav(string c) => ctrl.Equals(c, StringComparison.OrdinalIgnoreCase) ? "active" : "";
+}
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Sidebar -->
+<aside class="admin-sidebar" id="adminSidebar">
+    <div class="brand">
+        <i class="bi bi-shield-lock me-2 text-primary"></i>Admin Panel
+    </div>
+
+    <nav class="nav flex-column pt-2 flex-grow-1" style="overflow-y:auto">
+
+        <a class="nav-link @Nav("Dashboard")"
+           asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+            <i class="bi bi-speedometer2 me-2"></i>Dashboard
+        </a>
+
+        <div class="nav-section">Content</div>
+
+        <a class="nav-link @Nav("Profile")"
+           asp-area="Admin" asp-controller="Profile" asp-action="Edit">
+            <i class="bi bi-person-vcard me-2"></i>Profile
+        </a>
+        <a class="nav-link @Nav("Skills")"
+           asp-area="Admin" asp-controller="Skills" asp-action="Index">
+            <i class="bi bi-stars me-2"></i>Skills
+        </a>
+        <a class="nav-link @Nav("Experience")"
+           asp-area="Admin" asp-controller="Experience" asp-action="Index">
+            <i class="bi bi-briefcase me-2"></i>Experience
+        </a>
+        <a class="nav-link @Nav("Education")"
+           asp-area="Admin" asp-controller="Education" asp-action="Index">
+            <i class="bi bi-mortarboard me-2"></i>Education
+        </a>
+        <a class="nav-link @Nav("Projects")"
+           asp-area="Admin" asp-controller="Projects" asp-action="Index">
+            <i class="bi bi-folder2-open me-2"></i>Projects
+        </a>
+
+        <div class="nav-section">Inbox</div>
+
+        <a class="nav-link @Nav("Messages")"
+           asp-area="Admin" asp-controller="Messages" asp-action="Index">
+            <i class="bi bi-envelope me-2"></i>Messages
+        </a>
+
+    </nav>
+
+    <div class="p-3 border-top" style="border-color:rgba(255,255,255,.08) !important">
+        <form asp-controller="Auth" asp-action="Logout" asp-area="" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-outline-danger w-100">
+                <i class="bi bi-box-arrow-left me-1"></i>Logout
+            </button>
+        </form>
+    </div>
+</aside>
+
+<!-- Topbar -->
+<header class="admin-topbar">
+    <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-sm btn-outline-secondary d-lg-none"
+                id="sidebarToggle" aria-label="Toggle sidebar">
+            <i class="bi bi-list fs-5"></i>
+        </button>
+        <span class="text-muted small">@ViewData["Title"]</span>
+    </div>
+    <span class="small text-secondary">
+        <i class="bi bi-person-circle me-1"></i>@User.Identity?.Name
+    </span>
+</header>
+
+<!-- Content -->
+<div class="admin-content">
+    <div class="inner">
+
+        @if (TempData["Success"] is string successMsg)
+        {
+            <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>@successMsg
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @RenderBody()
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmJ5MbHZ/QHaXEpGp8apKAkGM0P"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    (function () {
+        var toggle  = document.getElementById('sidebarToggle');
+        var sidebar = document.getElementById('adminSidebar');
+        var overlay = document.getElementById('sidebarOverlay');
+
+        function open()  { sidebar.classList.add('show');    overlay.classList.add('show'); }
+        function close() { sidebar.classList.remove('show'); overlay.classList.remove('show'); }
+
+        if (toggle)  toggle.addEventListener('click',  function () { sidebar.classList.contains('show') ? close() : open(); });
+        if (overlay) overlay.addEventListener('click', close);
+    })();
+</script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

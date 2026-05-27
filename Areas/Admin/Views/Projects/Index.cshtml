@@ -1,0 +1,87 @@
+@model List<suneer_web.Models.Project>
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <div>
+        <h4 class="fw-bold mb-0">Projects</h4>
+        <p class="text-muted small mb-0">@Model.Count project(s) total</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-lg me-1"></i>Add Project
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="card border-0 shadow-sm">
+        <div class="card-body text-center py-5 text-muted">
+            <i class="bi bi-folder2-open fs-1 d-block mb-2 opacity-25"></i>
+            No projects yet. <a asp-action="Create">Add your first project.</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Tech Stack</th>
+                        <th style="width:90px">Links</th>
+                        <th style="width:100px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="fw-semibold">@p.Title</div>
+                                <div class="text-muted small text-truncate" style="max-width:300px">@p.Description</div>
+                            </td>
+                            <td>
+                                @foreach (var tag in p.TechStack.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Take(4))
+                                {
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary-subtle me-1 mb-1">@tag</span>
+                                }
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(p.GitHubUrl))
+                                {
+                                    <a href="@p.GitHubUrl" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark me-1" title="GitHub">
+                                        <i class="bi bi-github"></i>
+                                    </a>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(p.LiveUrl))
+                                {
+                                    <a href="@p.LiveUrl" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary" title="Live">
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                    </a>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <div class="d-flex gap-1 justify-content-end">
+                                    <a asp-action="Edit" asp-route-id="@p.Id"
+                                       class="btn btn-sm btn-outline-secondary" title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <form method="post" asp-action="Delete" asp-route-id="@p.Id"
+                                          onsubmit="return confirm('Delete project \'@p.Title\'?')">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
