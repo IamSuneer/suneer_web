@@ -13,7 +13,7 @@
 
   <!-- Primary SEO -->
   <title>Projects — Suneer Ranjitkar</title>
-  <meta name="description" content="Portfolio of projects by Suneer Ranjitkar — CV Portfolio, Task Management API, E-Commerce Dashboard, and more built with ASP.NET Core, React, and Docker." />
+  <meta name="description" content="Portfolio of projects by Suneer Ranjitkar — Aava HRIS, Exevision NHDOT/VTRANS, Nestle SFA, and more built with ASP.NET Core, Dapper, and SQL Server." />
   <meta name="author" content="Suneer Ranjitkar" />
   <meta name="theme-color" content="#0f172a" />
   <link rel="canonical" href="https://suneer.dev/projects.html" />
@@ -22,7 +22,7 @@
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://suneer.dev/projects.html" />
   <meta property="og:title"       content="Projects — Suneer Ranjitkar" />
-  <meta property="og:description" content="Portfolio of web applications built with ASP.NET Core, React, Docker, and more." />
+  <meta property="og:description" content="Portfolio of enterprise web applications built with ASP.NET Core, Dapper, SQL Server, and more." />
   <meta property="og:image"       content="https://suneer.dev/assets/img/og-image.svg" />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
@@ -32,7 +32,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Projects — Suneer Ranjitkar" />
-  <meta name="twitter:description" content="Portfolio of web applications built with ASP.NET Core, React, Docker, and more." />
+  <meta name="twitter:description" content="Portfolio of enterprise web applications built with ASP.NET Core, Dapper, SQL Server, and more." />
   <meta name="twitter:image"       content="https://suneer.dev/assets/img/og-image.svg" />
 
   <!-- Favicon -->
@@ -100,120 +100,102 @@
              role="group" aria-label="Filter projects by technology">
           <button class="filter-pill active" data-filter="all">All</button>
           <button class="filter-pill" data-filter="asp.net">.NET / ASP.NET</button>
-          <button class="filter-pill" data-filter="react">React</button>
-          <button class="filter-pill" data-filter="docker">Docker</button>
-          <button class="filter-pill" data-filter="azure">Azure</button>
+          <button class="filter-pill" data-filter="sql server">SQL Server</button>
+          <button class="filter-pill" data-filter="dapper">Dapper</button>
+          <button class="filter-pill" data-filter="rest api">REST API</button>
         </div>
 
         <div class="row g-4">
 
           <div class="col-lg-4 col-md-6 project-card-wrap animate-up"
-               data-tags="asp.net core, ef core, sqlite, bootstrap 5, c#, sendgrid">
+               data-tags="asp.net core, dapper, sql server, rest api, multi-tenant">
             <article class="project-card h-100">
               <div class="project-img">
-                <img src="assets/img/project-portfolio.svg" alt="CV Portfolio Website screenshot"
+                <img src="assets/img/project-portfolio.svg" alt="Aava HRIS and MPH system"
                      width="800" height="450" loading="lazy"
                      onerror="this.style.display='none'" />
-                <i class="bi bi-person-badge" aria-hidden="true"></i>
+                <i class="bi bi-people-fill" aria-hidden="true"></i>
               </div>
               <div class="project-card-body">
-                <div class="project-icon" aria-hidden="true"><i class="bi bi-person-badge"></i></div>
-                <h2 class="project-title">CV / Portfolio Website</h2>
+                <div class="project-icon" aria-hidden="true"><i class="bi bi-people-fill"></i></div>
+                <h2 class="project-title">Aava HRIS / MPH</h2>
                 <p class="project-desc">
-                  A full-stack personal portfolio with a secure admin panel. Features dynamic content management,
-                  cookie-based authentication with PBKDF2 password hashing, SendGrid password reset emails,
-                  dark/light mode, and EF Core with SQLite.
+                  Enterprise HR Information System and Manpower Planning Hub for Aava Global Solutions.
+                  Multi-tenant ASP.NET Core Web API with Dapper ORM, SQL Server, role-based access control,
+                  and optimised stored procedures for high-volume HR data workflows.
                 </p>
                 <div class="project-tags">
-                  <span class="badge">ASP.NET Core 8</span>
-                  <span class="badge">EF Core</span>
-                  <span class="badge">SQLite</span>
-                  <span class="badge">Bootstrap 5</span>
+                  <span class="badge">ASP.NET Core</span>
+                  <span class="badge">Dapper</span>
+                  <span class="badge">SQL Server</span>
+                  <span class="badge">REST API</span>
                   <span class="badge">C#</span>
-                  <span class="badge">SendGrid</span>
                 </div>
               </div>
               <div class="project-card-footer">
-                <a href="https://github.com/suneer/cv-portfolio" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-outline-secondary btn-sm">
-                  <i class="bi bi-github me-1" aria-hidden="true"></i>Code
-                </a>
-                <a href="https://suneer.dev" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-primary btn-sm">
-                  <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Live Demo
-                </a>
+                <span class="small text-secondary fst-italic">Enterprise — private codebase</span>
               </div>
             </article>
           </div>
 
           <div class="col-lg-4 col-md-6 project-card-wrap animate-up"
-               data-tags="asp.net core, jwt, signalr, postgresql, docker">
+               data-tags="asp.net core, asp.net framework, sql server, javascript, ajax">
             <article class="project-card h-100">
               <div class="project-img">
-                <img src="assets/img/project-taskapi.svg" alt="Task Management API screenshot"
+                <img src="assets/img/project-taskapi.svg" alt="Exevision NHDOT and VTRANS system"
                      width="800" height="450" loading="lazy"
                      onerror="this.style.display='none'" />
-                <i class="bi bi-kanban" aria-hidden="true"></i>
+                <i class="bi bi-map-fill" aria-hidden="true"></i>
               </div>
               <div class="project-card-body">
-                <div class="project-icon" aria-hidden="true"><i class="bi bi-kanban"></i></div>
-                <h2 class="project-title">Task Management API</h2>
+                <div class="project-icon" aria-hidden="true"><i class="bi bi-map-fill"></i></div>
+                <h2 class="project-title">Exevision — NHDOT &amp; VTRANS</h2>
                 <p class="project-desc">
-                  A real-time collaborative task management platform built as a RESTful Web API. Features JWT
-                  authentication with refresh tokens, live updates via SignalR, PostgreSQL persistence, and
-                  full Dockerised deployment with docker-compose.
+                  Transportation management platforms for New Hampshire DOT and Vermont Agency of Digital
+                  Services. Built with ASP.NET Core and ASP.NET Framework, AJAX-driven UI, and complex
+                  SQL Server stored procedures handling infrastructure asset data.
                 </p>
                 <div class="project-tags">
                   <span class="badge">ASP.NET Core</span>
-                  <span class="badge">JWT</span>
-                  <span class="badge">SignalR</span>
-                  <span class="badge">PostgreSQL</span>
-                  <span class="badge">Docker</span>
+                  <span class="badge">ASP.NET Framework</span>
+                  <span class="badge">SQL Server</span>
+                  <span class="badge">JavaScript / AJAX</span>
+                  <span class="badge">C#</span>
                 </div>
               </div>
               <div class="project-card-footer">
-                <a href="https://github.com/suneer/task-api" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-outline-secondary btn-sm">
-                  <i class="bi bi-github me-1" aria-hidden="true"></i>Code
-                </a>
+                <span class="small text-secondary fst-italic">Enterprise — private codebase</span>
               </div>
             </article>
           </div>
 
           <div class="col-lg-4 col-md-6 project-card-wrap animate-up"
-               data-tags="react, typescript, asp.net core, ef core, chart.js">
+               data-tags="asp.net core, dapper, sql server, rest api">
             <article class="project-card h-100">
               <div class="project-img">
-                <img src="assets/img/project-ecommerce.svg" alt="E-Commerce Dashboard screenshot"
+                <img src="assets/img/project-ecommerce.svg" alt="Nestle SFA system"
                      width="800" height="450" loading="lazy"
                      onerror="this.style.display='none'" />
-                <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+                <i class="bi bi-box-seam-fill" aria-hidden="true"></i>
               </div>
               <div class="project-card-body">
-                <div class="project-icon" aria-hidden="true"><i class="bi bi-graph-up-arrow"></i></div>
-                <h2 class="project-title">E-Commerce Dashboard</h2>
+                <div class="project-icon" aria-hidden="true"><i class="bi bi-box-seam-fill"></i></div>
+                <h2 class="project-title">Nestlé SFA</h2>
                 <p class="project-desc">
-                  A comprehensive analytics dashboard for e-commerce operations. React + TypeScript SPA with
-                  an ASP.NET Core backend. Includes interactive Chart.js charts, inventory management,
-                  order tracking, and role-based access control.
+                  Sales Force Automation system for Nestlé. ASP.NET Core Web API backend with Dapper and
+                  SQL Server supporting field-sales order entry, route management, and real-time sales
+                  reporting for distribution teams.
                 </p>
                 <div class="project-tags">
-                  <span class="badge">React</span>
-                  <span class="badge">TypeScript</span>
                   <span class="badge">ASP.NET Core</span>
-                  <span class="badge">EF Core</span>
-                  <span class="badge">Chart.js</span>
+                  <span class="badge">Dapper</span>
+                  <span class="badge">SQL Server</span>
+                  <span class="badge">REST API</span>
+                  <span class="badge">C#</span>
                 </div>
               </div>
               <div class="project-card-footer">
-                <a href="https://github.com/suneer/ecommerce-dashboard" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-outline-secondary btn-sm">
-                  <i class="bi bi-github me-1" aria-hidden="true"></i>Code
-                </a>
-                <a href="https://demo.suneer.dev/shop" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-primary btn-sm">
-                  <i class="bi bi-box-arrow-up-right me-1" aria-hidden="true"></i>Live Demo
-                </a>
+                <span class="small text-secondary fst-italic">Enterprise — private codebase</span>
               </div>
             </article>
           </div>
@@ -258,7 +240,7 @@
              class="footer-link" aria-label="LinkedIn profile">
             <i class="bi bi-linkedin" aria-hidden="true"></i>
           </a>
-          <a href="mailto:suneer@suneer.dev" class="footer-link" aria-label="Send email">
+          <a href="mailto:suneer.netser@gmail.com" class="footer-link" aria-label="Send email">
             <i class="bi bi-envelope-fill" aria-hidden="true"></i>
           </a>
         </div>
