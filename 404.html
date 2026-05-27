@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Prevent flash of unstyled theme -->
+  <script>
+    (function(){var t=localStorage.getItem('sr-theme')||
+      (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+      document.documentElement.setAttribute('data-bs-theme',t);})();
+  </script>
+
+  <title>404 — Page Not Found · Suneer Ranjitkar</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Return to Suneer Ranjitkar's portfolio." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Favicon -->
+  <link rel="icon"             href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/img/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" aria-label="Suneer Ranjitkar — Home">
+        <span class="brand-bracket" aria-hidden="true">&lt;</span>SR<span class="brand-bracket" aria-hidden="true">/&gt;</span>
+      </a>
+      <div class="d-flex align-items-center gap-2 order-lg-last">
+        <button id="themeToggle" class="btn btn-sm btn-ghost-icon" aria-label="Toggle colour theme">
+          <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="error-section" aria-label="404 error">
+      <div class="container text-center">
+
+        <div class="error-code" aria-hidden="true">404</div>
+
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-desc">
+          The page you're looking for doesn't exist or has been moved.<br />
+          Let's get you back on track.
+        </p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+          <a href="index.html" class="btn btn-primary btn-lg">
+            <i class="bi bi-house-fill me-2" aria-hidden="true"></i>Go Home
+          </a>
+          <a href="projects.html" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-folder2-open me-2" aria-hidden="true"></i>View Projects
+          </a>
+          <a href="contact.html" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-envelope me-2" aria-hidden="true"></i>Contact Me
+          </a>
+        </div>
+
+        <nav class="mt-5" aria-label="Page links">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="index.html" class="text-secondary text-decoration-none small">Home</a>
+            </li>
+            <li class="list-inline-item text-secondary small mx-1" aria-hidden="true">·</li>
+            <li class="list-inline-item">
+              <a href="about.html" class="text-secondary text-decoration-none small">About</a>
+            </li>
+            <li class="list-inline-item text-secondary small mx-1" aria-hidden="true">·</li>
+            <li class="list-inline-item">
+              <a href="projects.html" class="text-secondary text-decoration-none small">Projects</a>
+            </li>
+            <li class="list-inline-item text-secondary small mx-1" aria-hidden="true">·</li>
+            <li class="list-inline-item">
+              <a href="contact.html" class="text-secondary text-decoration-none small">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
