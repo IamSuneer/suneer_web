@@ -124,6 +124,23 @@
   if (contactForm) {
     contactForm.addEventListener('submit', async e => {
       e.preventDefault();
+
+      const fields = contactForm.querySelectorAll('input[required], textarea[required]');
+      let valid = true;
+      fields.forEach(f => {
+        f.classList.remove('is-invalid');
+        if (!f.value.trim()) { f.classList.add('is-invalid'); valid = false; }
+      });
+      const emailField = contactForm.querySelector('input[type="email"]');
+      if (emailField && emailField.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim())) {
+        emailField.classList.add('is-invalid');
+        valid = false;
+      }
+      if (!valid) {
+        showFormStatus('danger', '<i class="bi bi-exclamation-triangle-fill me-2"></i>Please fill in all required fields with valid information.');
+        return;
+      }
+
       const btn = contactForm.querySelector('button[type="submit"]');
       const orig = btn.innerHTML;
       btn.disabled = true;
@@ -161,6 +178,12 @@
     formStatus.hidden = false;
     formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     setTimeout(() => { formStatus.hidden = true; }, 8000);
+  }
+
+  if (contactForm) {
+    contactForm.querySelectorAll('input, textarea').forEach(f => {
+      f.addEventListener('input', () => f.classList.remove('is-invalid'));
+    });
   }
 
   /* ── Typed effect on hero (index only) ──────────────────────────────── */
