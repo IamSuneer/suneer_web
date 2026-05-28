@@ -1,7 +1,0 @@
-Place your CV/resume PDF file in this folder.
-
-Expected filename: cv-suneer.pdf
-Full path:         assets/cv/cv-suneer.pdf
-
-The "Download CV" button on the website already points to this path.
-Once you add the file, the button will work automatically on GitHub Pages.
